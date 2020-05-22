@@ -73,15 +73,15 @@ public class CREATE extends Container {
         create.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name=nametext.getText();
-                String surname=surnametext.getText();
-                String cardnumber=cardnumbertext.getText();
-                String pin=pintext.getText();
+                String name =nametext.getText();
+                String surname =surnametext.getText();
+                String cardnumber =cardnumbertext.getText();
+                String pin =pintext.getText();
                 String money=moneytext.getText();
 
-                Client client=new Client(null ,name,surname,cardnumber,pin,money);
-                packagedata PD=new packagedata("CREATE",client);
-                Main.connect(PD);
+                Client client = new Client ( null, name, surname,cardnumber,pin,money);
+                PackageData pd = new PackageData("CREATE", client);
+                Main.connect(pd);
 
 
                 nametext.setText("");
@@ -89,27 +89,29 @@ public class CREATE extends Container {
                 cardnumbertext.setText("");
                 pintext.setText("");
                 moneytext.setText("");
-
             }
         });
-        add(create);
 
-        BACK = new JButton("BACK");
 
-        BACK.setBounds(90, 300, 210, 30);
-        BACK.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.frame.mainwindow.setVisible(true);
-                Main.frame.createwindow.setVisible(false);
+          add(create);
+
+                BACK = new JButton("BACK");
+
+                BACK.setBounds(90, 300, 210, 30);
+                BACK.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Main.frame.mainwindow.setVisible(true);
+                        Main.frame.createwindow.setVisible(false);
+
+                    }
+                });
+                add(BACK);
+
 
             }
-        });
-        add(BACK);
+        }
 
 
 
-    }
-
-}
 

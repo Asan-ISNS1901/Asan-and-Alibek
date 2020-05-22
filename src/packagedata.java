@@ -1,45 +1,34 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class packagedata implements Serializable {
-    private String operationType;// ADD, LIST
+public class PackageData implements Serializable {
+    private String operationType;
     private Client client;
     private ArrayList<Client> clients;
 
-    public packagedata(String operationType, Client student) {////Send to server info about one student
+    public PackageData(String operationType, Client client) {
         this.operationType = operationType;
-        this.client = student;
+        this.client = client;
     }
 
-    public packagedata(String operationType) {/// List all info from server
+    public PackageData(String operationType) {
         this.operationType = operationType;
     }
 
-    public packagedata(ArrayList<Client> students) {/// Send back to client
-        this.clients = students;
+    public PackageData(ArrayList<Client> clients) {
+        this.clients = clients;
     }
 
     public String getOperationType() {
         return operationType;
     }
 
-    public void setOperationType(String operationType) {
-        this.operationType = operationType;
-    }
-
-    public Client getStudent() {
+    public Client getClient() {
         return client;
     }
 
-    public void setStudent(Client student) {
-        this.client = student;
-    }
-
-    public ArrayList<Client> getStudents() {
+    public ArrayList<Client> getClients() {
         return clients;
     }
-
-    public void setStudents(ArrayList<Client> students) {
-        this.clients = students;
-    }
 }
+

@@ -17,7 +17,7 @@ public class Client implements Serializable {
         this.money = money;
     }
 
-    public Client() {
+    public Client(Object o, String cardnumber, String pin) {
     }
 
     public Integer getId() {
@@ -69,7 +69,7 @@ public class Client implements Serializable {
     }
 
     public String toString(){
-        return id+" "+name+" "+surname+" "+money+"Тг";
+        return name+" "+surname+"\n "+money+"Тг";
     }
 
 }

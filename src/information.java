@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,11 +21,17 @@ public class information extends Container {
         INFO.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            packagedata PD=new packagedata("DATA");
-            Main.connect(PD);
+               PackageData pd=new PackageData("DATA");
+                Main.connect(pd);
+                
+
+
+
             }
         });
         add(INFO);
+
+
 
         BACK=new JButton("Back");
 

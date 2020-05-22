@@ -36,8 +36,7 @@ import java.awt.event.ActionListener;
                 }
             });
             add(SignIn);
-            or=new JLabel("or");
-            or.setBounds(250,160,300,30);
+
 
 
             Create=new JButton("Create new account");

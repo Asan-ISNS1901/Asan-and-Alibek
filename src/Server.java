@@ -1,6 +1,5 @@
 import java.net.ServerSocket;
 import java.net.Socket;
-
 public class Server {
     public static void main(String[] args) {
         try{
@@ -11,7 +10,7 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 System.out.println("Client connected");
 
-                serverthread st = new serverthread(socket);
+                ServerThread st = new ServerThread(socket);
                 st.start();
             }
 

@@ -1,26 +1,28 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class database {
     private Connection connection;
-
     public void connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");///
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/clienttable?useUnicode=true&serverTimezone=UTC", "root", ""
+                    "jdbc:mysql://localhost:3306/clienttable?useUnicode=true&serverTimezone=UTC","root", ""
             );
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void addClient(Client client) {
-        try {
+    public void CREATE(Client client){
+        try{
 
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO client (id, name, surname, cardnumber, pin,money) " +
-                    "VALUES (NULL, ?, ?, ?, ?,?)"
+                    "INSERT INTO `client`(`id`, `name`, `surname`, `cardnumber`, `pin`, `money`) "+
+                    "VALUES (null,?,?,?,?,?)"
             );
             statement.setString(1, client.getName());
             statement.setString(2, client.getSurname());
@@ -32,18 +34,18 @@ public class database {
 
             statement.close();
 
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Client> getAllCLients() {
-        ArrayList<Client> clientlist = new ArrayList<>();
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM client");
+    public ArrayList<Client> getAllClients(){
+        ArrayList<Client> clientList = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `client`");
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
+            while(resultSet.next()){
                 Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
@@ -51,15 +53,15 @@ public class database {
                 String pin = resultSet.getString("pin");
                 String money = resultSet.getString("money");
 
-                clientlist.add(new Client(id, name, surname, cardnumber, pin, money));
+
+
+                clientList.add(new Client(id,name,surname,cardnumber, pin,money));
             }
             statement.close();
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
-        return clientlist;
+        return clientList;
     }
 
-
 }
-
